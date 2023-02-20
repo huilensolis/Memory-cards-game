@@ -37,7 +37,7 @@ body{
     align-items: center;
     justify-content: center;
     position: relative;
-    transition: 2s;
+    transition: 1500ms;
 }
 .front{
     /* 164px */

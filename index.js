@@ -38,9 +38,10 @@ shuffle(cardslist);
 // creating cards
 function creatingCards(array) {
   for (product of array) {
+
     // <section class="card">
-    // <div class="front"></div>
-    // <div class="back"></div>
+      // <div class="front"></div>
+      // <div class="back"></div>
     // </section>
 
     //card
@@ -84,32 +85,38 @@ backElements.forEach((backElement) => {
 
 //text in middle of the screen
 function rotation() {
-    this.classList.add('actived');
-    let activeCards = document.querySelectorAll('.actived');
-    
-    if (activeCards.length >= 2){
-      let firstCard = activeCards[0];
-      let secondCard = activeCards[1];
-      if (firstCard.getAttribute('card_id') === secondCard.getAttribute('card_id')) {
-        matchedCards(firstCard, secondCard)
-      } else {
-        secondCard.classList.add('actived');
-        //secondCard.classList.remove('actived');
+    if(!this.classList.contains('matched') && document.querySelectorAll('.actived').length < 2){
+      this.classList.add('actived');
 
-        this.classList.add('actived');
-        activeCards.forEach((card) => {
-          setTimeout(() => {
-            firstCard.classList.remove('actived');
-            secondCard.classList.remove('actived');
-          }, 2000);
-        });
+      let activeCards = document.querySelectorAll('.actived');
+      if (activeCards.length >= 2){
+        let firstCard = activeCards[0];
+        let secondCard = activeCards[1];
+        if (firstCard.getAttribute('card_id') === secondCard.getAttribute('card_id')) {
+          matchedCards(firstCard, secondCard)
+        } else {
+          secondCard.classList.add('actived');
+          //secondCard.classList.remove('actived');
+
+          this.classList.add('actived');
+          activeCards.forEach((card) => {
+            setTimeout(() => {
+              firstCard.classList.remove('actived');
+              secondCard.classList.remove('actived');
+            }, 1500);
+          });
+        }
       }
     }      
 }
 // all matched carts function that actives them
 function matchedCards(firstcard, secondCard){
+  // add matched class
   firstcard.classList.add('matched')
   secondCard.classList.add('matched')
+  //remove actived class
+  firstcard.classList.remove('actived')
+  secondCard.classList.remove('actived')
 }
 //deleting all cards
 function deleteCards() {
