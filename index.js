@@ -2,7 +2,7 @@
 
 //cards container
 const cardsContainer = document.querySelector(".cards-container");
-
+const principalContainer =document.querySelector('.principal-container')
 // cards list
 const cardslist = [
   { id: 1, name: "", image: "./images/img1.png" },
@@ -84,6 +84,11 @@ backElements.forEach((backElement) => {
 });
 
 //text in middle of the screen
+var result = document.createElement('p');
+principalContainer.appendChild(result);
+result.classList.add('result_text')
+
+// rotation card function
 function rotation() {
     if(!this.classList.contains('matched') && document.querySelectorAll('.actived').length < 2){
       this.classList.add('actived');
@@ -105,10 +110,28 @@ function rotation() {
               secondCard.classList.remove('actived');
             }, 1500);
           });
-        }
-      }
-    }      
-}
+        };
+      };
+
+      // registering if the user finishes the game or he doesnt
+      if(cardslist.length === document.querySelectorAll('.matched').length){
+        console.log('game finished');
+
+        clearInterval(timerInterval);
+
+        setTimeout(() => {
+          deleteCards();
+        }, 1000)
+
+        setTimeout(() => {
+          result.innerHTML = ('You win!')
+        }, 2000)
+
+      } else{
+        console.log('the game continues');
+      };
+    }    ;  
+};
 // all matched carts function that actives them
 function matchedCards(firstcard, secondCard){
   // add matched class
@@ -128,8 +151,13 @@ function restart() {
   for (let card of cardsActive) {
     card.classList.remove("actived");
 }
+  // deleting result text 
+  result.remove()
 
-  //mixing the cards again
+  // stop timer 
+  restartTimer()
+
+  // deleting, mixing and creating the cards again
   deleteCards();
   shuffle(cardslist)
   creatingCards(cardslist);
@@ -144,5 +172,52 @@ function changingButtons() {
   // creating cars
   creatingCards(cardslist);
 
+  // starting timer 
+  countdown()
+
   startButton.style.display = "none";
+}
+
+
+
+
+
+
+
+// timer
+
+let timerInterval;
+
+// Get the timer element from the HTML
+let timer = document.querySelector('.timer');
+
+// Update the timer every second
+function countdown() {
+  let minutes = 1;
+  let seconds = 60;
+  timerInterval = setInterval(() => {
+    // Update the seconds
+    seconds--;
+
+    // If the seconds reach 0, decrement the minutes and reset the seconds to 59
+    if (seconds < 0) {
+      seconds = 59;
+      minutes--;
+    }
+
+    // If the minutes and seconds both reach 0, stop the timer and display a message
+    if (minutes === 0 && seconds === 0) {
+      clearInterval(timerInterval);
+      timer.textContent = "Time's up!, you have losed";
+    } else {
+      // Otherwise, update the timer element with the current minutes and seconds
+      timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    }
+  }, 1000);
+}
+
+// reset timer
+function restartTimer() {
+  clearInterval(timerInterval);
+  countdown();
 }

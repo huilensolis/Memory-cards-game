@@ -20,6 +20,7 @@ body{
     align-items: center;
     justify-content: center;
 }
+/*  */
 .principal-container{
     margin-top: 20px;
     height: 100%;
@@ -76,7 +77,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 .buttons button{
     width: 100px;
@@ -104,4 +105,44 @@ body{
 }
 .matched{
     transform: rotateY(180deg);
+}
+
+/* result text  */
+.result_text{
+    transition: 1s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-50%);
+    font-size: 60px;
+    width: 225px;
+     margin: calc((100vh - 69px)/2) calc((100vw - 225px)/2); /*calculate the margin using 100vw and the element width */
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px rgb(255, 0, 51),
+      0 0 80px rgb(255, 0, 0),
+      0 0 90px rgb(255, 85, 0),
+      0 0 100px rgb(255, 106, 0),
+      0 0 150px rgb(255, 183, 0);
+}
+
+/* timer */
+.timer_container{
+    
+}
+.timer{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px rgb(255, 0, 51),
+      0 0 80px rgb(255, 0, 0),
+      0 0 90px rgb(255, 85, 0),
+      0 0 100px rgb(255, 106, 0),
+      0 0 150px rgb(255, 183, 0);
 }
