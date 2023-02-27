@@ -101,7 +101,6 @@ function rotation() {
           matchedCards(firstCard, secondCard)
         } else {
           secondCard.classList.add('actived');
-          //secondCard.classList.remove('actived');
 
           this.classList.add('actived');
           activeCards.forEach((card) => {
