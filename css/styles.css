@@ -28,22 +28,21 @@ body{
     display: grid;
 }
 .cards-container{
-    border: 2px solid white;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: repeat(auto, minmax(500px, 1fr));
     min-height: 500px;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url("https://images6.alphacoders.com/676/thumb-1920-676334.jpg");
+    /* background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url("https://images6.alphacoders.com/676/thumb-1920-676334.jpg"); */
     backdrop-filter: blur(5px);
     background-size: cover;
     background-position: center;
-    padding: 16px;
     gap: 10px;
 }
 .card{
     width: 100%;
-    height: 100%;
+    height: 378px;
     transform-style: preserve-3d;
     backface-visibility: hidden;
     display: none;
@@ -53,9 +52,8 @@ body{
     transition: 1500ms;
 }
 .front{
-    /* 164px */
     width: 100%;
-    height: 250px;
+    height: 100%;
     position: absolute;
     /* background-image: url('../images/craiyon_200714__playing_card_backface_cartoon_design.png'); */
     background-position: center;
@@ -64,7 +62,7 @@ body{
 }
 .back{
     width: 100%;
-    height: 250px;
+    height: 100%;
     /* background-image: url(../images/img1.png); */
     background-size: cover;
     transform: rotateY(180deg);
@@ -78,21 +76,28 @@ body{
 .buttons{
     padding-top: 20px;
     width: 100%;
-    height: 80px;
+    height: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
 }
 .buttons button{
-    width: 100px;
-    height: 80%;
+    width: 100%;
+    height: 50px;
     padding: 5px;
     font-size: 18px;
     color: white;
     border: none;
     border-radius: 12px;
     background-color: rgba(239, 123, 123, 0.54);
+}
+.start{
+    order: 0;
+}
+.restart{
+    order: 1;
 }
 .result{
     color: white;
@@ -104,7 +109,7 @@ body{
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
-    width: 300px;
+    width: 100%;
     z-index: 99;
     text-shadow: 1px 0px 20px rgb(239, 123, 123),1px 0px 20px rgb(239, 123, 123),1px 0px 20px rgb(239, 123, 123), 1px 0px 20px rgb(239, 123, 123) ;
 }
@@ -114,6 +119,7 @@ body{
 
 /* result text  */
 .result_text{
+    order: 5;
     transition: 1s;
     position: absolute;
     left: 0;
@@ -136,6 +142,7 @@ body{
 
 /* timer */
 .timer{
+    order: 3;
     font-size: 40px;
     color: #fff;
     text-shadow:
@@ -143,14 +150,15 @@ body{
       0 0 10px #fff,
       0 0 20px #fff,
       0 0 40px rgb(255, 0, 51),
-      0 0 80px rgb(255, 0, 0),
-      0 0 90px rgb(255, 85, 0),
-      0 0 100px rgb(255, 106, 0),
-      0 0 150px rgb(255, 183, 0);
+      0 0 20px rgb(255, 0, 0),
+      0 0 20px rgb(255, 85, 0),
+      0 0 20px rgb(255, 106, 0),
+      0 0 20px rgb(255, 183, 0);
 }
 
 /* score  */
 .score{
+    order: 4;
     font-size: 40px;
     color: white;
     text-shadow:

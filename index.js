@@ -1,10 +1,10 @@
-// const card = document.querySelector('.card');
+let main = document.querySelector('.main')
 // buttons container 
 let buttonsContainer = document.querySelector('.buttons')
 
 //cards container
-const cardsContainer = document.querySelector(".cards-container");
 const principalContainer =document.querySelector('.principal-container')
+const cardsContainer = document.querySelector(".cards-container");
 // cards list
 const cardsList = [
   { id: 1, name: "", image: "./images/img1.png" },
@@ -49,7 +49,7 @@ function creatingCards(array) {
     //card
     let card = document.createElement("section");
     card.classList.add("card");
-    cardsContainer.appendChild(card);
+    main.appendChild(card);
 
     card.setAttribute('card_id', product.id);
     
@@ -155,7 +155,7 @@ function matchedCards(firstCard, secondCard){
 }
 //deleting all cards
 function deleteCards() {
-  cardsContainer.innerHTML = "";
+  main.innerHTML = "";
 }
 
 function restart() {
@@ -184,6 +184,7 @@ const restartButton = document.querySelector(".restart");
 startButton.addEventListener("click", changingButtons);
 
 function changingButtons() {
+  main.classList.add('cards-container')
   // creating cars
   creatingCards(cardsList);
 
@@ -192,7 +193,6 @@ function changingButtons() {
 
   startButton.style.display = "none";
 }
-
 
 
 
