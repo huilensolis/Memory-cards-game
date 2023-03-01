@@ -6,7 +6,7 @@ let buttonsContainer = document.querySelector('.buttons')
 const cardsContainer = document.querySelector(".cards-container");
 const principalContainer =document.querySelector('.principal-container')
 // cards list
-const cardslist = [
+const cardsList = [
   { id: 1, name: "", image: "./images/img1.png" },
   { id: 1, name: "", image: "./images/img1.png" },
   { id: 2, name: "", image: "./images/img2.png" },
@@ -36,7 +36,7 @@ function shuffle(array) {
   }
   
   // Call the shuffle function to shuffle the cards
-shuffle(cardslist);
+shuffle(cardsList);
 // creating cards
 function creatingCards(array) {
   for (product of array) {
@@ -95,12 +95,12 @@ let score = document.createElement('p');
 let scoreCount = 0;
 score.classList.add('score');
 buttonsContainer.appendChild(score);
-score.innerHTML = `your score: ${scoreCount}`
+score.innerHTML = `Your score: ${scoreCount}`
 
 // restart score
 function restartScore(){
   scoreCount = 0;
-  score.innerHTML = `your score: ${scoreCount}`
+  score.innerHTML = `Your score: ${scoreCount}`
 }
 // rotation card function
 function rotation() {
@@ -114,7 +114,7 @@ function rotation() {
         if (firstCard.getAttribute('card_id') === secondCard.getAttribute('card_id')) {
           matchedCards(firstCard, secondCard)
           scoreCount+= 3;
-          score.innerHTML = `your score: ${scoreCount}`
+          score.innerHTML = `Your score: ${scoreCount}`
         } else {
           secondCard.classList.add('actived');
 
@@ -129,7 +129,7 @@ function rotation() {
       };
 
       // registering if the user finishes the game or he does'nt
-      if(cardslist.length === document.querySelectorAll('.matched').length){
+      if(cardsList.length === document.querySelectorAll('.matched').length){
 
         clearInterval(timerInterval);
 
@@ -145,12 +145,12 @@ function rotation() {
     }    ;  
 };
 // all matched carts function that actives them
-function matchedCards(firstcard, secondCard){
+function matchedCards(firstCard, secondCard){
   // add matched class
-  firstcard.classList.add('matched')
+  firstCard.classList.add('matched')
   secondCard.classList.add('matched')
   //remove actived class
-  firstcard.classList.remove('actived')
+  firstCard.classList.remove('actived')
   secondCard.classList.remove('actived')
 }
 //deleting all cards
@@ -171,8 +171,8 @@ function restart() {
 
   // deleting, mixing and creating the cards again
   deleteCards();
-  shuffle(cardslist)
-  creatingCards(cardslist);
+  shuffle(cardsList)
+  creatingCards(cardsList);
 
   // restarting score 
   restartScore()
@@ -185,7 +185,7 @@ startButton.addEventListener("click", changingButtons);
 
 function changingButtons() {
   // creating cars
-  creatingCards(cardslist);
+  creatingCards(cardsList);
 
   // starting timer 
   countdown()
@@ -226,7 +226,7 @@ function countdown() {
       minutes = 0;
     };
       // Otherwise, update the timer element with the current minutes and seconds
-      timer.textContent = `your time: ${hours}:${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+      timer.textContent = `Your time: ${hours}:${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
       // // timer.textContent = `${hours}:${minutes}:$
   }, 1000);
 }
