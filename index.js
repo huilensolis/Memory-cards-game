@@ -1,10 +1,12 @@
-let main = document.querySelector('.main')
+// cards container
+let main = document.querySelector('.main');
+
 // buttons container 
-let buttonsContainer = document.querySelector('.buttons')
+let buttonsContainer = document.querySelector('.buttons');
 
 //cards container
-const principalContainer =document.querySelector('.principal-container')
-const cardsContainer = document.querySelector(".cards-container");
+const principalContainer =document.querySelector('.principal-container');
+
 // cards list
 const cardsList = [
   { id: 1, name: "", image: "./images/img1.png" },
@@ -30,10 +32,10 @@ function shuffle(array) {
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
-    }
+    };
   
     return array;
-  }
+  };
   
   // Call the shuffle function to shuffle the cards
 shuffle(cardsList);
@@ -75,8 +77,8 @@ function creatingCards(array) {
     card.style.display = "block";
 
     
-  }
-}
+  };
+};
 // selecting all the back elements
 const backElements = document.querySelectorAll(".back");
 
@@ -95,13 +97,13 @@ let score = document.createElement('p');
 let scoreCount = 0;
 score.classList.add('score');
 buttonsContainer.appendChild(score);
-score.innerHTML = `Your score: ${scoreCount}`
+score.innerHTML = `Your score: ${scoreCount}`;
 
 // restart score
 function restartScore(){
   scoreCount = 0;
-  score.innerHTML = `Your score: ${scoreCount}`
-}
+  score.innerHTML = `Your score: ${scoreCount}`;
+};
 // rotation card function
 function rotation() {
     if(!this.classList.contains('matched') && document.querySelectorAll('.actived').length < 2){
@@ -112,9 +114,9 @@ function rotation() {
         let firstCard = activeCards[0];
         let secondCard = activeCards[1];
         if (firstCard.getAttribute('card_id') === secondCard.getAttribute('card_id')) {
-          matchedCards(firstCard, secondCard)
+          matchedCards(firstCard, secondCard);
           scoreCount+= 3;
-          score.innerHTML = `Your score: ${scoreCount}`
+          score.innerHTML = `Your score: ${scoreCount}`;
         } else {
           secondCard.classList.add('actived');
 
@@ -135,28 +137,30 @@ function rotation() {
 
         setTimeout(() => {
           deleteCards();
-        }, 1000)
+        }, 1000);
 
         setTimeout(() => {
           result.innerHTML = ('You win!')
-        }, 2000)
+        }, 2000);
 
       };
-    }    ;  
+    };
 };
 // all matched carts function that actives them
 function matchedCards(firstCard, secondCard){
+
   // add matched class
-  firstCard.classList.add('matched')
-  secondCard.classList.add('matched')
+  firstCard.classList.add('matched');
+  secondCard.classList.add('matched');
+
   //remove actived class
-  firstCard.classList.remove('actived')
-  secondCard.classList.remove('actived')
-}
+  firstCard.classList.remove('actived');
+  secondCard.classList.remove('actived');
+};
 //deleting all cards
 function deleteCards() {
   main.innerHTML = "";
-}
+};
 
 function restart() {
   let cardsActive = document.querySelectorAll(".card");
@@ -167,7 +171,7 @@ function restart() {
   result.innerHTML = "";
 
   // stop timer 
-  restartTimer()
+  restartTimer();
 
   // deleting, mixing and creating the cards again
   deleteCards();
@@ -175,8 +179,8 @@ function restart() {
   creatingCards(cardsList);
 
   // restarting score 
-  restartScore()
-}
+  restartScore();
+};
 // button start or restart
 const startButton = document.querySelector(".start");
 const restartButton = document.querySelector(".restart");
@@ -189,7 +193,7 @@ function changingButtons() {
   creatingCards(cardsList);
 
   // starting timer 
-  countdown()
+  countdown();
 
   startButton.style.display = "none";
 }

@@ -31,10 +31,8 @@ body{
     height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto, minmax(500px, 1fr));
     min-height: 500px;
     width: 100%;
-    /* background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url("https://images6.alphacoders.com/676/thumb-1920-676334.jpg"); */
     backdrop-filter: blur(5px);
     background-size: cover;
     background-position: center;
@@ -42,7 +40,7 @@ body{
 }
 .card{
     width: 100%;
-    height: 378px;
+    height: 300px;
     transform-style: preserve-3d;
     backface-visibility: hidden;
     display: none;
@@ -55,18 +53,18 @@ body{
     width: 100%;
     height: 100%;
     position: absolute;
-    /* background-image: url('../images/craiyon_200714__playing_card_backface_cartoon_design.png'); */
     background-position: center;
     background-size: cover;
     backface-visibility: hidden;
 }
 .back{
+    border: 3px solid #642924;
     width: 100%;
     height: 100%;
-    /* background-image: url(../images/img1.png); */
     background-size: cover;
     transform: rotateY(180deg);
     backface-visibility: hidden;
+    background-position: center;
 }
 .actived{
     transform: rotateY(180deg);
@@ -84,20 +82,15 @@ body{
     gap: 20px;
 }
 .buttons button{
-    width: 100%;
+    width: 250px;
     height: 50px;
     padding: 5px;
-    font-size: 18px;
+    font-size: 30px;
+    font-weight: 600;
     color: white;
     border: none;
     border-radius: 12px;
     background-color: rgba(239, 123, 123, 0.54);
-}
-.start{
-    order: 0;
-}
-.restart{
-    order: 1;
 }
 .result{
     color: white;
@@ -119,7 +112,6 @@ body{
 
 /* result text  */
 .result_text{
-    order: 5;
     transition: 1s;
     position: absolute;
     left: 0;
@@ -127,7 +119,7 @@ body{
     transform: translateY(-50%);
     font-size: 60px;
     width: 225px;
-     margin: calc((100vh - 69px)/2) calc((100vw - 225px)/2); /*calculate the margin using 100vw and the element width */
+    margin: calc((100vh - 69px)/2) calc((100vw - 225px)/2); /*calculate the margin using 100vw and the element width */
     color: #fff;
     text-shadow:
       0 0 5px #fff,
@@ -141,8 +133,11 @@ body{
 }
 
 /* timer */
+.timer_container{
+    display: flex;
+}
 .timer{
-    order: 3;
+    text-align: center;
     font-size: 40px;
     color: #fff;
     text-shadow:
@@ -158,7 +153,6 @@ body{
 
 /* score  */
 .score{
-    order: 4;
     font-size: 40px;
     color: white;
     text-shadow:
