@@ -148,3 +148,18 @@ body{
       0 0 100px rgb(255, 106, 0),
       0 0 150px rgb(255, 183, 0);
 }
+
+/* score  */
+.score{
+    font-size: 40px;
+    color: white;
+    text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px rgb(255, 0, 51),
+    0 0 80px rgb(255, 0, 0),
+    0 0 90px rgb(255, 85, 0),
+    0 0 100px rgb(255, 106, 0),
+    0 0 150px rgb(255, 183, 0);
+}

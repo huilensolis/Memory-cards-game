@@ -1,4 +1,6 @@
 // const card = document.querySelector('.card');
+// buttons container 
+let buttonsContainer = document.querySelector('.buttons')
 
 //cards container
 const cardsContainer = document.querySelector(".cards-container");
@@ -86,8 +88,20 @@ backElements.forEach((backElement) => {
 //text in middle of the screen
 var result = document.createElement('p');
 principalContainer.appendChild(result);
-result.classList.add('result_text')
+result.classList.add('result_text');
 
+// score system
+let score = document.createElement('p');
+let scoreCount = 0;
+score.classList.add('score');
+buttonsContainer.appendChild(score);
+score.innerHTML = `your score: ${scoreCount}`
+
+// restart score
+function restartScore(){
+  scoreCount = 0;
+  score.innerHTML = `your score: ${scoreCount}`
+}
 // rotation card function
 function rotation() {
     if(!this.classList.contains('matched') && document.querySelectorAll('.actived').length < 2){
@@ -99,6 +113,8 @@ function rotation() {
         let secondCard = activeCards[1];
         if (firstCard.getAttribute('card_id') === secondCard.getAttribute('card_id')) {
           matchedCards(firstCard, secondCard)
+          scoreCount+= 3;
+          score.innerHTML = `your score: ${scoreCount}`
         } else {
           secondCard.classList.add('actived');
 
@@ -112,9 +128,8 @@ function rotation() {
         };
       };
 
-      // registering if the user finishes the game or he doesnt
+      // registering if the user finishes the game or he does'nt
       if(cardslist.length === document.querySelectorAll('.matched').length){
-        console.log('game finished');
 
         clearInterval(timerInterval);
 
@@ -126,8 +141,6 @@ function rotation() {
           result.innerHTML = ('You win!')
         }, 2000)
 
-      } else{
-        console.log('the game continues');
       };
     }    ;  
 };
@@ -151,7 +164,7 @@ function restart() {
     card.classList.remove("actived");
 }
   // deleting result text 
-  result.remove()
+  result.innerHTML = "";
 
   // stop timer 
   restartTimer()
@@ -160,6 +173,9 @@ function restart() {
   deleteCards();
   shuffle(cardslist)
   creatingCards(cardslist);
+
+  // restarting score 
+  restartScore()
 }
 // button start or restart
 const startButton = document.querySelector(".start");
@@ -192,26 +208,26 @@ let timer = document.querySelector('.timer');
 
 // Update the timer every second
 function countdown() {
-  let minutes = 1;
-  let seconds = 60;
+  let minutes = 00;
+  let seconds = 00;
+  let hours = 00;
   timerInterval = setInterval(() => {
     // Update the seconds
-    seconds--;
+    seconds++;
 
     // If the seconds reach 0, decrement the minutes and reset the seconds to 59
-    if (seconds < 0) {
-      seconds = 59;
-      minutes--;
-    }
-
-    // If the minutes and seconds both reach 0, stop the timer and display a message
-    if (minutes === 0 && seconds === 0) {
-      clearInterval(timerInterval);
-      timer.textContent = "Time's up!, you have losed";
-    } else {
+    if (seconds > 50) {
+      seconds = 0;
+      minutes++;
+    };
+    if(minutes > 59){
+      hours++;
+      seconds = 0;
+      minutes = 0;
+    };
       // Otherwise, update the timer element with the current minutes and seconds
-      timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    }
+      timer.textContent = `your time: ${hours}:${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+      // // timer.textContent = `${hours}:${minutes}:$
   }, 1000);
 }
 
@@ -220,3 +236,4 @@ function restartTimer() {
   clearInterval(timerInterval);
   countdown();
 }
+
