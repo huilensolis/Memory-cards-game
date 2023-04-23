@@ -9,17 +9,32 @@ const principalContainer =document.querySelector('.principal-container');
 
 // cards list
 const cardsList = [
-  { id: 1, name: "", image: "./images/img1.png" },
-  { id: 1, name: "", image: "./images/img1.png" },
-  { id: 2, name: "", image: "./images/img2.png" },
-  { id: 2, name: "", image: "./images/img2.png" },
-  { id: 3, name: "", image: "./images/img3.png" },
-  { id: 3, name: "", image: "./images/img3.png" },
-  { id: 4, name: "", image: "./images/img4.png" },
-  { id: 4, name: "", image: "./images/img4.png" },
-  { id: 5, name: "", image: "./images/img5.png" },
-  { id: 5, name: "", image: "./images/img5.png" },
+  { id: 1, name: "", image: new Image(), url: "./images/img1.png" },
+  { id: 1, name: "", image: new Image(), url: "./images/img1.png" },
+  { id: 2, name: "", image: new Image(), url: "./images/img2.png" },
+  { id: 2, name: "", image: new Image(), url: "./images/img2.png" },
+  { id: 3, name: "", image: new Image(), url: "./images/img3.png" },
+  { id: 3, name: "", image: new Image(), url: "./images/img3.png" },
+  { id: 4, name: "", image: new Image(), url: "./images/img4.png" },
+  { id: 4, name: "", image: new Image(), url: "./images/img4.png" },
+  { id: 5, name: "", image: new Image(), url: "./images/img5.png" },
+  { id: 5, name: "", image: new Image(), url: "./images/img5.png" },
 ];
+
+let loadedImages = 0;
+cardsList.forEach((card) => {
+  card.image.onload = () => {
+    loadedImages++;
+    if (loadedImages === cardsList.length) {
+      // All images have finished loading
+      console.log("All images loaded.");
+      // Now you can display the images on the page
+    }
+  };
+  card.image.src = card.url;
+  console.log(card.image.src)
+});
+
 
 // mixing cards
 function shuffle(array) {
@@ -68,7 +83,7 @@ function creatingCards(array) {
     let back = document.createElement("div");
     back.classList.add("back");
     card.appendChild(back);
-    back.style.setProperty("background-image", `url(${product.image})`);
+    back.style.setProperty("background-image", `url(${product.url})`);
 
     //card rotation
     card.addEventListener("click", rotation);
