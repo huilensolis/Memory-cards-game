@@ -76,7 +76,7 @@ function creatingCards(array) {
     card.appendChild(front);
     //putting image
 
-    front.style.backgroundImage = `url('/images/mystical-drawing-sun-with-face-moon-crescent-moon-device-universe-crescent-moon_166005-974.avif')`;
+    front.style.backgroundImage = `url('./images/mystical-drawing-sun-with-face-moon-crescent-moon-device-universe-crescent-moon_166005-974.avif')`;
 
     //back
     let back = document.createElement("div");
