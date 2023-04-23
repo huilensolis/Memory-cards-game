@@ -6,9 +6,9 @@
 html {
     height: 100%;
   }
-  body {
+body {
     min-height: 100%;
-  }
+}
 body{
     width: 100%;
     min-height: 100%;
@@ -17,6 +17,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+p, h1, span{
+    font-weight: 600;
+    color: #DAC7A7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*  */
 .principal-container{
@@ -75,10 +80,12 @@ body{
     width: 100%;
     height: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    margin-bottom: 50px;
+    transition: 1.5s;
 }
 .buttons button{
     width: 250px;
@@ -86,13 +93,17 @@ body{
     padding: 5px;
     font-size: 30px;
     font-weight: 600;
-    color: white;
+    color: #DAC7A7;
     border: none;
+    border: 2px solid #DAC7A7;
     border-radius: 12px;
     background-color: rgba(239, 123, 123, 0.54);
 }
+.buttons > button:hover{
+    background-color: #69463e;
+}
 .result{
-    color: white;
+    color: #DAC7A7;
     font-weight: 600;
     font-size: 50px;
     position: absolute; 
@@ -117,50 +128,53 @@ body{
     top: 0;
     transform: translateY(-50%);
     font-size: 60px;
-    width: 225px;
-    margin: calc((100vh - 69px)/2) calc((100vw - 225px)/2); /*calculate the margin using 100vw and the element width */
-    color: #fff;
-    text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #fff,
-      0 0 40px rgb(255, 0, 51),
-      0 0 80px rgb(255, 0, 0),
-      0 0 90px rgb(255, 85, 0),
-      0 0 100px rgb(255, 106, 0),
-      0 0 150px rgb(255, 183, 0);
+    width: 300px;
+    margin: calc((100vh - 69px)/2) calc((100vw - 300px)/2); /*calculate the margin using 100vw and the element width */
 }
 
 /* timer */
 .timer_container{
-    display: flex;
+    display: none;
 }
 .timer{
     text-align: center;
-    font-size: 40px;
-    color: #fff;
-    text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #fff,
-      0 0 40px rgb(255, 0, 51),
-      0 0 20px rgb(255, 0, 0),
-      0 0 20px rgb(255, 85, 0),
-      0 0 20px rgb(255, 106, 0),
-      0 0 20px rgb(255, 183, 0);
+    width: max-content;
+    height: 50px;
+    background-color: rgba(239, 123, 123, 0.54);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    border: 2px solid #DAC7A7;
 }
-
 /* score  */
 .score{
-    font-size: 40px;
-    color: white;
-    text-shadow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #fff,
-    0 0 40px rgb(255, 0, 51),
-    0 0 80px rgb(255, 0, 0),
-    0 0 90px rgb(255, 85, 0),
-    0 0 100px rgb(255, 106, 0),
-    0 0 150px rgb(255, 183, 0);
+    width: max-content;
+    height: 50px;
+    background-color: rgba(239, 123, 123, 0.54);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    border: 2px solid #DAC7A7;
+    display: none;
+}
+@media (max-width:650px) {
+    .buttons{
+        flex-direction: column;
+    }
+    .buttons .timer_container{
+        order: 1;
+    }
+    .buttons .score{
+        order: 2;
+    }
+    .buttons .restart{
+        order: 3;
+    }
+}
+.displayed{
+    display: flex;
 }

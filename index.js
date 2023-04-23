@@ -111,12 +111,12 @@ let score = document.createElement('p');
 let scoreCount = 0;
 score.classList.add('score');
 buttonsContainer.appendChild(score);
-score.innerHTML = `Your score: ${scoreCount}`;
+score.innerHTML = `Score: ${scoreCount}`;
 
 // restart score
 function restartScore(){
   scoreCount = 0;
-  score.innerHTML = `Your score: ${scoreCount}`;
+  score.innerHTML = `Score: ${scoreCount}`;
 };
 // rotation card function
 function rotation() {
@@ -130,7 +130,7 @@ function rotation() {
         if (firstCard.getAttribute('card_id') === secondCard.getAttribute('card_id')) {
           matchedCards(firstCard, secondCard);
           scoreCount+= 3;
-          score.innerHTML = `Your score: ${scoreCount}`;
+          score.innerHTML = `Score: ${scoreCount}`;
         } else {
           secondCard.classList.add('actived');
 
@@ -206,8 +206,12 @@ function changingButtons() {
   // creating cars
   creatingCards(cardsList);
 
-  // starting timer 
+  // starting timer
+  let timerContainer = document.querySelector('.timer_container')
+  timerContainer.classList.add('displayed') 
   countdown();
+
+  score.classList.add('displayed')
 
   startButton.style.display = "none";
 }
@@ -223,7 +227,7 @@ let timerInterval;
 
 // Get the timer element from the HTML
 let timer = document.querySelector('.timer');
-
+timer.innerHTML = `Timer : 0`
 // Update the timer every second
 function countdown() {
   let minutes = 00;
@@ -244,7 +248,7 @@ function countdown() {
       minutes = 0;
     };
       // Otherwise, update the timer element with the current minutes and seconds
-      timer.textContent = `Your time: ${hours}:${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+      timer.textContent = `${hours}:${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
       // // timer.textContent = `${hours}:${minutes}:$
   }, 1000);
 }
