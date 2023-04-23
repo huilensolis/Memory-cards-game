@@ -35,7 +35,6 @@ cardsList.forEach((card) => {
   console.log(card.image.src)
 });
 
-
 // mixing cards
 function shuffle(array) {
     let currentIndex = array.length;
@@ -77,7 +76,7 @@ function creatingCards(array) {
     card.appendChild(front);
     //putting image
 
-    front.style.backgroundImage = `url('./images/62ho7z2dmv9a1.webp')`;
+    front.style.backgroundImage = `url('/images/mystical-drawing-sun-with-face-moon-crescent-moon-device-universe-crescent-moon_166005-974.avif')`;
 
     //back
     let back = document.createElement("div");

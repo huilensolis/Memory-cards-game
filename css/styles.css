@@ -12,9 +12,7 @@ html {
 body{
     width: 100%;
     min-height: 100%;
-    background-image: url('../images/img1.png');
-    background-position: center;
-    background-size: cover;
+    background-color: #262626;      
     backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
@@ -47,7 +45,7 @@ body{
     align-items: center;
     justify-content: center;
     position: relative;
-    transition: 1500ms;
+    transition: 1s;
 }
 .front{
     width: 100%;
@@ -56,9 +54,10 @@ body{
     background-position: center;
     background-size: cover;
     backface-visibility: hidden;
+    border: 2px solid #DAC7A7;
 }
 .back{
-    border: 3px solid #642924;
+    border: 3px solid #DAC7A7;
     width: 100%;
     height: 100%;
     background-size: cover;
