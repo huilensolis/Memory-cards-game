@@ -124,12 +124,11 @@ p, h1, span{
 .result_text{
     transition: 1s;
     position: absolute;
-    left: 0;
-    top: 0;
-    transform: translateY(-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 60px;
-    width: 300px;
-    margin: calc((100vh - 69px)/2) calc((100vw - 300px)/2); /*calculate the margin using 100vw and the element width */
+    width: max-content;
 }
 
 /* timer */
