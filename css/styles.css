@@ -162,6 +162,12 @@ p, h1, span{
     display: none;
 }
 @media (max-width:650px) {
+    .cards-container{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card{
+        height: 200px;
+    }
     .buttons{
         flex-direction: column;
     }
